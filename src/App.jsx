@@ -69,15 +69,19 @@ const TodoList = () => {
 
   return (
     <div>
+      <h1>Todo</h1>
       <input
         type="text"
         value={todoText}
+        placeholder='Write your todo'
         onChange={e => setTodoText(e.target.value)}
       />
       <button onClick={handleAddTodo}>Add Todo</button>
 
       {state.todos.map(todo => (
-        <li type='checkbox' key={todo.id}>
+        <table key={todo.id}>
+        <tr>
+          <td>
           {editTodoId === todo.id ? (
             <>
               <input
@@ -94,7 +98,9 @@ const TodoList = () => {
               <button onClick={() => handleRemoveTodo(todo.id)}>Delete</button>
             </>
           )}
-        </li>
+          </td>
+        </tr>
+        </table>
       ))}
     </div>
   );
